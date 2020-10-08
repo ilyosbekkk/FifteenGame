@@ -1,5 +1,6 @@
 package com.example.fifteengame;
 
+import androidx.annotation.IntegerRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //endregion
     //region vars
 
+    boolean isWon;
 
     //endregion
     //region overrides
@@ -26,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         swap = findViewById(R.id.swap);
-
+        isWon = true;
         buttons = new Button[]{
                 findViewById(R.id.button1),
                 findViewById(R.id.button2),
@@ -84,36 +89,44 @@ public class MainActivity extends AppCompatActivity {
         int index = Integer.parseInt(view.getTag().toString()) - 1;
         int right = index + 1;
         int left = index - 1;
-
         int top = index - 4;
         int down = index + 4;
 
-
-        Log.d("Tags", "moveButtons: " + view.getTag());
-
-        if (right<=15 && buttons[right].getVisibility() == View.INVISIBLE) {
-
-                view.setVisibility(View.INVISIBLE);
-                buttons[right].setText(view.getText());
-                view.setText(null);
-                buttons[right].setVisibility(View.VISIBLE);
-
-        } else if (left>=0 && buttons[left].getVisibility() == View.INVISIBLE) {
+        if (right <= 15 && buttons[right].getVisibility() == View.INVISIBLE) {
+            view.setVisibility(View.INVISIBLE);
+            buttons[right].setText(view.getText());
+            view.setText(null);
+            buttons[right].setVisibility(View.VISIBLE);
+        } else if (left >= 0 && buttons[left].getVisibility() == View.INVISIBLE) {
             view.setVisibility(View.INVISIBLE);
             buttons[left].setText(view.getText());
             view.setText(null);
             buttons[left].setVisibility(View.VISIBLE);
-        } else if (top>=0 && buttons[top].getVisibility() == View.INVISIBLE) {
+        } else if (top >= 0 && buttons[top].getVisibility() == View.INVISIBLE) {
             view.setVisibility(View.INVISIBLE);
             buttons[top].setText(view.getText());
             view.setText(null);
             buttons[top].setVisibility(View.VISIBLE);
-        } else if (down<=15 && buttons[down].getVisibility() == View.INVISIBLE) {
+        } else if (down <= 15 && buttons[down].getVisibility() == View.INVISIBLE) {
             view.setVisibility(View.INVISIBLE);
             buttons[down].setText(view.getText());
             view.setText(null);
             buttons[down].setVisibility(View.VISIBLE);
         }
+
+
+        ArrayList<String> numbers = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {
+            numbers.add(buttons[i].getText().toString());
+        }
+
+        ArrayList<String> strings = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"));
+
+        if (numbers.equals(strings))
+            Log.d("isWon", "You won");
+        else Log.d("isWon", "You lost");
+
+
     }
     //endregion
 }
