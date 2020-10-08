@@ -26,28 +26,28 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="1" />
+                android:tag="1" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="2" />
+                android:tag="2" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="3" />
+                android:tag="3" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="4" />
+                android:tag="4" />
         </TableRow>
 
         <TableRow android:id="@+id/row2">
@@ -57,28 +57,28 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="5" />
+                android:tag="5" />
 
             <Button
                 android:id="@+id/button6"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="6" />
+                android:tag="6" />
 
             <Button
                 android:id="@+id/button7"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="7" />
+                android:tag="7" />
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="8" />
+                android:tag="8" />
         </TableRow>
 
         <TableRow android:id="@+id/row3">
@@ -88,28 +88,28 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="9" />
+                android:tag="9" />
 
             <Button
                 android:id="@+id/button10"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="10" />
+                android:tag="10" />
 
             <Button
                 android:id="@+id/button11"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="11" />
+                android:tag="11" />
 
             <Button
                 android:id="@+id/button12"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="12" />
+                android:tag="12" />
         </TableRow>
 
         <TableRow android:id="@+id/row4">
@@ -119,33 +119,42 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="13" />
+                android:tag="13" />
 
             <Button
                 android:id="@+id/button14"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="14" />
+                android:tag="14" />
 
             <Button
                 android:id="@+id/button15"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="15" />
+                android:tag="15" />
 
             <Button
-                android:visibility="invisible"
                 android:id="@+id/button16"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:text="16" />
+                android:tag="16" />
 
 
         </TableRow>
     </TableLayout>
+
+    <Button
+        android:id="@+id/swap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="swap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/table_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
