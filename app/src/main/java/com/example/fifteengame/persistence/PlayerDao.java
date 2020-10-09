@@ -1,6 +1,5 @@
 package com.example.fifteengame.persistence;
 
-import android.provider.ContactsContract;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -20,7 +19,7 @@ public interface PlayerDao {
     //endregion
 
     //region query
-    @Query("SELECT *from player_info")
+    @Query("SELECT * from player_info")
     LiveData<List<Player>> getPlayer();
     //endregion
 

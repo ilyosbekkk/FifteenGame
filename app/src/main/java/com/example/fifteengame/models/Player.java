@@ -17,8 +17,8 @@ public class Player  implements Parcelable {
     @ColumnInfo(name = "time")
     private String time;
 
-    public Player(int id, String userName, String time) {
-        this.id = id;
+    public Player( String userName, String time) {
+
         this.userName = userName;
         this.time = time;
     }

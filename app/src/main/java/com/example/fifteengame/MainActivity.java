@@ -1,6 +1,7 @@
 package com.example.fifteengame;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,8 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+
+import com.example.fifteengame.models.Player;
+import com.example.fifteengame.persistence.PlayerRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +28,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String username;
+
+
         timer = findViewById(R.id.timer);
+        sample = findViewById(R.id.sample);
+        mPlayerRepository = new PlayerRepository(this);
+
+        mPlayers = new ArrayList<>();
+
+
+
         if (getIntent().hasExtra("username")) {
             username = getIntent().getStringExtra("username");
             Toast.makeText(this, "HI " + username + "!", Toast.LENGTH_SHORT).show();
@@ -65,16 +79,22 @@ public class MainActivity extends AppCompatActivity {
         // shuffle the buttons
         shuffleButtons();
 
+
         thread = new Timer();
         thread.start();
+
+        findViewById(R.id.navigate).setOnClickListener(v -> navigate());
 
 
     }
     //endregion
 
     // region Variables
-    TextView timer;
+    TextView timer, sample;
     Timer thread;
+    List<Player> mPlayers;
+    String username;
+    PlayerRepository mPlayerRepository;
     private static final int SHUFFLE_TIMES = 500;
     private static final String TAG = "MyFifteenGame";
     private Button[] buttons;
@@ -118,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
         if (areAllButtonsCorrect()) {
             Toast.makeText(this, "Congratulations! You did it!", Toast.LENGTH_SHORT).show();
             thread.interrupt();
+            savePlayerInfo(new Player(username, timer.getText().toString()));
+            Log.d(TAG, "onButtonClick: " + "Username: " + username + " Time Completed: " + timer.getText().toString());
+
             shuffleButtons();
         }
 
@@ -222,6 +245,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //endregion
+
+    //region savePlayer score and username
+    private void savePlayerInfo(Player player) {
+        mPlayerRepository.insertPayerInfo(player);
+    }
+    //endregion
+
+    //region navoate to records page
+    private void navigate() {
+        Intent intent = new Intent(this, UserInfoActivity.class);
+        startActivity(intent);
+    }
+    //endregion
+
 
 }
 
