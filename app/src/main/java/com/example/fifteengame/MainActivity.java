@@ -1,17 +1,20 @@
 package com.example.fifteengame;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 
 import com.example.fifteengame.models.Player;
 import com.example.fifteengame.persistence.PlayerRepository;
@@ -30,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        timer = findViewById(R.id.timer);
+        secondUnit = findViewById(R.id.seconds);
+        minuteUnit = findViewById(R.id.minute);
         sample = findViewById(R.id.sample);
         mPlayerRepository = new PlayerRepository(this);
 
         mPlayers = new ArrayList<>();
-
 
 
         if (getIntent().hasExtra("username")) {
@@ -82,15 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
         thread = new Timer();
         thread.start();
-
-        findViewById(R.id.navigate).setOnClickListener(v -> navigate());
-
-
     }
     //endregion
 
     // region Variables
-    TextView timer, sample;
+    TextView secondUnit, sample, minuteUnit;
     Timer thread;
     List<Player> mPlayers;
     String username;
@@ -138,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
         if (areAllButtonsCorrect()) {
             Toast.makeText(this, "Congratulations! You did it!", Toast.LENGTH_SHORT).show();
             thread.interrupt();
-            savePlayerInfo(new Player(username, timer.getText().toString()));
-            Log.d(TAG, "onButtonClick: " + "Username: " + username + " Time Completed: " + timer.getText().toString());
+            savePlayerInfo(new Player(username, secondUnit.getText().toString()));
+            Log.d(TAG, "onButtonClick: " + "Username: " + username + " Time Completed: " + secondUnit.getText().toString());
 
             shuffleButtons();
         }
@@ -236,11 +235,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void runTime() throws InterruptedException {
+        int q;
         for (int i = 0; i < 1000; i++) {
             Thread.sleep(1000);
             int finalI = i;
-            timer.post(() -> timer.setText(String.valueOf(finalI)));
+            if (finalI != 0 && finalI % 60 == 0) {
+                minuteUnit.post(() -> minuteUnit.setText("0" + finalI / 60));
+
+            }
+            q = i % 60;
+            int finalQ = q;
+            if (finalQ < 10)
+                secondUnit.post(() -> secondUnit.setText("0" + finalQ));
+            else
+                secondUnit.post(() -> secondUnit.setText(String.valueOf(finalQ)));
+
 
         }
     }
@@ -251,6 +262,28 @@ public class MainActivity extends AppCompatActivity {
         mPlayerRepository.insertPayerInfo(player);
     }
     //endregion
+
+
+    //region menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.record_view_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.record) {
+            navigate();
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //endreigon
 
     //region navoate to records page
     private void navigate() {

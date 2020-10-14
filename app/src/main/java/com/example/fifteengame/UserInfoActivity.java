@@ -45,16 +45,6 @@ public class UserInfoActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
     //endregion
-
-  /*  //region fakeNotes
-   // private void insertPlayerInfo(){
-        for(int i = 0; i<20; i++){
-            mPlayers.add(new Player("Name: " + i, "100"));
-
-        }
-    }
-    //endregion*/
-
     //region player info
     private void getInfo(){
         mRepository.retrievePlayerInfo().observe(this, players -> {

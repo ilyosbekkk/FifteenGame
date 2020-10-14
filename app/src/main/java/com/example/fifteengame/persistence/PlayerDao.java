@@ -15,7 +15,7 @@ public interface PlayerDao {
 
     //region insert
     @Insert
-    long[] insertPlayerInfo(Player... players);
+    void insertPlayerInfo(Player... players);
     //endregion
 
     //region query

@@ -9,16 +9,37 @@
 
 
     <TextView
-        android:id="@+id/timer"
+        android:id="@+id/seconds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="?attr/actionBarSize"
-        android:layout_marginBottom="48dp"
-        android:text=""
+        android:text="@string/_00"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/table_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/table_layout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="12dp"
+        android:layout_height="61dp"
+        android:gravity="center|center_vertical"
+        android:text=":"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seconds"
+        app:layout_constraintEnd_toEndOf="@+id/seconds"
+        app:layout_constraintStart_toStartOf="@+id/minute"
+        app:layout_constraintTop_toTopOf="@+id/seconds" />
+
+
+    <TextView
+        android:id="@+id/minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="?attr/actionBarSize"
+        android:text="@string/_00"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/table_layout"
+        app:layout_constraintStart_toStartOf="@+id/table_layout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
@@ -31,7 +52,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
 
         <TableRow android:id="@+id/row1">
@@ -172,21 +192,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/table_layout" />
 
-    <Button
-        android:id="@+id/navigate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="154dp"
-        android:layout_marginLeft="154dp"
-        android:layout_marginTop="111dp"
-        android:layout_marginEnd="169dp"
-        android:layout_marginRight="169dp"
-        android:layout_marginBottom="76dp"
-        android:text="go"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_layout" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

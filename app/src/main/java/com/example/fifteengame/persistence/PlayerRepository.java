@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PlayerRepository {
 
-    private PlayerDatabase mPlayerDatabase;
+    private final PlayerDatabase mPlayerDatabase;
 
     public PlayerRepository(Context context) {
         mPlayerDatabase = PlayerDatabase.getInstance(context);

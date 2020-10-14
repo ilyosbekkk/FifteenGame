@@ -1,6 +1,5 @@
 package com.example.fifteengame.async_operations;
 
-import android.provider.ContactsContract;
 
 import com.example.fifteengame.models.Player;
 import com.example.fifteengame.persistence.PlayerDao;

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fifteen Game</string>
+    <string name="username">username</string>
+    <string name="score">score</string>
+    <string name="records">Records</string>
+    <string name="_00">00</string>
 </resources>

@@ -20,7 +20,6 @@ public abstract class PlayerDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), PlayerDatabase.class, DATABASE_NAME).build();
         }
-
         return instance;
     }
 
