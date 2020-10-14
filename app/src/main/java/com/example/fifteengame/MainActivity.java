@@ -2,6 +2,7 @@ package com.example.fifteengame;
 
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fifteengame.models.Player;
@@ -276,11 +278,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Your game state will not be saved, continue?");
         if (item.getItemId() == R.id.record) {
-            navigateToRecordsPage();
+            alertDialogBuilder.setPositiveButton(R.string.yes, (dialog, which) -> navigateToRecordsPage());
+            alertDialogBuilder.setNegativeButton(R.string.no, ((dialog, which) -> Toast.makeText(this, "back to game state", Toast.LENGTH_SHORT).show()));
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
             return true;
         } else if (item.getItemId() == R.id.about) {
-            navigateToAboutPage();
+
+
+            alertDialogBuilder.setPositiveButton(R.string.yes, (dialog, which) -> navigateToAboutPage());
+            alertDialogBuilder.setNegativeButton(R.string.no, ((dialog, which) -> Toast.makeText(this, "back to game state", Toast.LENGTH_SHORT).show()));
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
             return true;
         } else {
             return false;

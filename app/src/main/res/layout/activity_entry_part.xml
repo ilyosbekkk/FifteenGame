@@ -9,26 +9,32 @@
     tools:context=".EntryPart">
 
     <TextView
+        android:textStyle="bold"
+        android:textColor="@color/red"
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="FIFTEEN GAME"
+        android:text="@string/fifteen_game"
         android:textSize="30sp" />
 
     <EditText
+
         android:lines="1"
         android:id="@+id/useername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Enter your username" />
+        android:hint="@string/enter_your_username"
+        android:autofillHints="" />
 
     <Button
+        android:background="@drawable/mybutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="startGame"
-        android:text="Start Game!" />
+        android:textColor="@color/white"
+        android:text="@string/start_game" />
 
 </LinearLayout>

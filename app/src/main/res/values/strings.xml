@@ -7,4 +7,9 @@
     <string name="about">About</string>
     <string name="records">Records</string>
     <string name="about_text">Welcome to FifteenGame! In this game you will develop your logical thinking by solving fifteen puzzle</string>
+    <string name="start_game">Start!</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="fifteen_game">FIFTEEN GAME</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 </resources>
