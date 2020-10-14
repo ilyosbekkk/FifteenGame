@@ -277,7 +277,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.record) {
-            navigate();
+            navigateToRecordsPage();
+            return true;
+        } else if (item.getItemId() == R.id.about) {
+            navigateToAboutPage();
             return true;
         } else {
             return false;
@@ -286,11 +289,19 @@ public class MainActivity extends AppCompatActivity {
     //endreigon
 
     //region navoate to records page
-    private void navigate() {
+    private void navigateToRecordsPage() {
         Intent intent = new Intent(this, UserInfoActivity.class);
         startActivity(intent);
     }
     //endregion
+
+    //region
+    private void navigateToAboutPage() {
+        Intent intent = new Intent(this, AboutPage.class);
+        startActivity(intent);
+
+    }
+    ///endregion
 
 
 }

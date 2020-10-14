@@ -2,6 +2,9 @@
     <string name="app_name">Fifteen Game</string>
     <string name="username">username</string>
     <string name="score">score</string>
-    <string name="records">Records</string>
+
     <string name="_00">00</string>
+    <string name="about">About</string>
+    <string name="records">Records</string>
+    <string name="about_text">Welcome to FifteenGame! In this game you will develop your logical thinking by solving fifteen puzzle</string>
 </resources>
